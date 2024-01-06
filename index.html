@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>键盘转换工具</title>
+    <title>RusTranslitKeyboard - 将拉丁字母无缝转换为俄文字母</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -33,7 +33,7 @@
 
         button {
             padding: 10px 20px;
-            margin: 20px;
+            margin: 10px 20px 25px 20px;
             background-color: #4CAF50;
             color: white;
             border: none;
@@ -63,6 +63,10 @@
             vertical-align: top;
         }
 
+        .key:hover {
+            background-color: #e9e9e9;
+        }
+
         .key-label {
             display: block;
             font-size: .9em;
@@ -82,7 +86,7 @@
 
 <body onload="document.getElementById('input').focus();">
 
-    <h1>拉丁字母转俄文字母工具</h1>
+    <h1>基于拉丁字母的俄文软键盘</h1>
 
     <textarea id="input" placeholder="在此输入拉丁字母，实时转换为俄文字母。"></textarea>
     <button id="copyButton">复制</button>
