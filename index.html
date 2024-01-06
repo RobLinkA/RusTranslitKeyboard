@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>键盘转换工具</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e0e0e0;
+            text-align: center;
+            padding-top: 30px;
+        }
+
+        #input {
+            width: 90%;
+            max-width: 1200px;
+            min-height: 360px;
+            padding: 15px;
+            font-size: 1.2em;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        textarea#input {
+            font-family: Arial;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .keyboard {
+            text-align: center;
+        }
+
+        .key {
+            display: inline-block;
+            width: 40px;
+            height: 60px;
+            margin: 5px;
+            padding: 5px;
+            background-color: #f2f2f2;
+            border: 1px solid #dcdcdc;
+            border-radius: 4px;
+            cursor: pointer;
+            vertical-align: top;
+        }
+
+        .key-label {
+            display: block;
+            font-size: .9em;
+            color: #333;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+            margin-bottom: 5px;
+        }
+
+        .key-letter {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body onload="document.getElementById('input').focus();">
+
+    <h1>拉丁字母转俄文字母工具</h1>
+
+    <textarea id="input" placeholder="在此输入拉丁字母，实时转换为俄文字母。"></textarea>
+    <button id="copyButton">复制</button>
+    <button id="clearButton" onclick="clearInput()">清空</button>
+    <button id="undoButton" onclick="undoAction()">撤销</button>
+
+    <div class="keyboard">
+        <!-- 第一排按键 -->
+        <div class="key-row">
+            <div class="key" onclick="addToInput('—')"><span class="key-label">-</span><span class="key-letter">—</span></div>
+            <div class="key" onclick="addToInput('№')"><span class="key-label">#</span><span class="key-letter">№</span></div>
+            <div class="key" onclick="addToInput('́')"><span class="key-label">`</span><span class="key-letter">́</span></div>
+            <div class="key" onclick="addToInput('«')"><span class="key-label">q</span><span class="key-letter">«</span></div>
+            <div class="key" onclick="addToInput('»')"><span class="key-label">w</span><span class="key-letter">»</span></div>
+            <div class="key" onclick="addToInput('э')"><span class="key-label">e</span><span class="key-letter">э</span></div>
+            <div class="key" onclick="addToInput('р')"><span class="key-label">r</span><span class="key-letter">р</span></div>
+            <div class="key" onclick="addToInput('т')"><span class="key-label">t</span><span class="key-letter">т</span></div>
+            <div class="key" onclick="addToInput('ы')"><span class="key-label">y</span><span class="key-letter">ы</span></div>
+            <div class="key" onclick="addToInput('е')"><span class="key-label">ye</span><span class="key-letter">е</span></div>
+            <div class="key" onclick="addToInput('ё')"><span class="key-label">yo</span><span class="key-letter">ё</span></div>
+            <div class="key" onclick="addToInput('ю«')"><span class="key-label">yu</span><span class="key-letter">ю</span></div>
+            <div class="key" onclick="addToInput('я')"><span class="key-label">ya</span><span class="key-letter">я</span></div>
+            <div class="key" onclick="addToInput('у')"><span class="key-label">u</span><span class="key-letter">у</span></div>
+            <div class="key" onclick="addToInput('и')"><span class="key-label">i</span><span class="key-letter">и</span></div>
+            <div class="key" onclick="addToInput('о')"><span class="key-label">o</span><span class="key-letter">о</span></div>
+            <div class="key" onclick="addToInput('п')"><span class="key-label">p</span><span class="key-letter">п</span></div>
+        </div>
+        <!-- 第二排按键... -->
+        <div class="key-row">
+            <div class="key" onclick="addToInput('а')"><span class="key-label">a</span><span class="key-letter">а</span></div>
+            <div class="key" onclick="addToInput('с')"><span class="key-label">s</span><span class="key-letter">с</span></div>
+            <div class="key" onclick="addToInput('ш')"><span class="key-label">sh</span><span class="key-letter">ш</span></div>
+            <div class="key" onclick="addToInput('щ')"><span class="key-label">shh</span><span class="key-letter">щ</span></div>
+            <div class="key" onclick="addToInput('д')"><span class="key-label">d</span><span class="key-letter">д</span></div>
+            <div class="key" onclick="addToInput('ф')"><span class="key-label">f</span><span class="key-letter">ф</span></div>
+            <div class="key" onclick="addToInput('г')"><span class="key-label">g</span><span class="key-letter">г</span></div>
+            <div class="key" onclick="addToInput('х')"><span class="key-label">h</span><span class="key-letter">х</span></div>
+            <div class="key" onclick="addToInput('й')"><span class="key-label">j</span><span class="key-letter">й</span></div>
+            <div class="key" onclick="addToInput('е')"><span class="key-label">je</span><span class="key-letter">е</span></div>
+            <div class="key" onclick="addToInput('ё')"><span class="key-label">jo</span><span class="key-letter">ё</span></div>
+            <div class="key" onclick="addToInput('ю')"><span class="key-label">ju</span><span class="key-letter">ю</span></div>
+            <div class="key" onclick="addToInput('я')"><span class="key-label">ja</span><span class="key-letter">я</span></div>
+            <div class="key" onclick="addToInput('к')"><span class="key-label">k</span><span class="key-letter">к</span></div>
+            <div class="key" onclick="addToInput('л')"><span class="key-label">l</span><span class="key-letter">л</span></div>
+            <div class="key" onclick="addToInput('ь')"><span class="key-label">'</span><span class="key-letter">ь</span></div>
+            <div class="key" onclick="addToInput('ъ')"><span class="key-label">"</span><span class="key-letter">ъ</span></div>
+        </div>
+        <!-- 第三排按键... -->
+        <div class="key-row">
+            <div class="key" onclick="addToInput('з')"><span class="key-label">z</span><span class="key-letter">з</span></div>
+            <div class="key" onclick="addToInput('ж')"><span class="key-label">zh</span><span class="key-letter">ж</span></div>
+            <div class="key" onclick="addToInput('х')"><span class="key-label">x</span><span class="key-letter">х</span></div>
+            <div class="key" onclick="addToInput('ц')"><span class="key-label">c</span><span class="key-letter">ц</span></div>
+            <div class="key" onclick="addToInput('ч')"><span class="key-label">ch</span><span class="key-letter">ч</span></div>
+            <div class="key" onclick="addToInput('в')"><span class="key-label">v</span><span class="key-letter">в</span></div>
+            <div class="key" onclick="addToInput('б')"><span class="key-label">b</span><span class="key-letter">б</span></div>
+            <div class="key" onclick="addToInput('н')"><span class="key-label">n</span><span class="key-letter">н</span></div>
+            <div class="key" onclick="addToInput('м')"><span class="key-label">m</span><span class="key-letter">м</span></div>
+        </div>
+    </div>
+
+    <script>
+        // 映射规则
+        const mapping = {
+            // 单字符映射
+            'a': 'а',
+            'b': 'б',
+            'v': 'в',
+            'g': 'г',
+            'd': 'д',
+            'e': 'э',
+            'z': 'з',
+            'i': 'и',
+            'k': 'к',
+            'l': 'л',
+            'm': 'м',
+            'n': 'н',
+            'o': 'о',
+            'p': 'п',
+            'r': 'р',
+            's': 'с',
+            't': 'т',
+            'u': 'у',
+            'f': 'ф',
+            'h': 'х',
+            'c': 'ц',
+            'y': 'ы',
+            'j': 'й',
+            'x': 'х',
+            '\"': 'ъ',
+            '\'': 'ь',
+            'q': '«',
+            'w': '»',
+            '#': '№',
+            '`': '́',
+
+            // 大写字符映射
+            'A': 'А',
+            'B': 'Б',
+            'V': 'В',
+            'G': 'Г',
+            'D': 'Д',
+            'E': 'Э',
+            'Z': 'З',
+            'I': 'И',
+            'K': 'К',
+            'L': 'Л',
+            'M': 'М',
+            'N': 'Н',
+            'O': 'О',
+            'P': 'П',
+            'R': 'Р',
+            'S': 'С',
+            'T': 'Т',
+            'U': 'У',
+            'F': 'Ф',
+            'H': 'Х',
+            'C': 'Ц',
+            'Y': 'Ы',
+            'J': 'Й',
+            'X': 'Х',
+            'Q': '«',
+            'W': '»',
+
+            // 特殊字符组合
+            'ch': 'ч',
+            'sh': 'ш',
+            'shh': 'щ',
+            'zh': 'ж',
+            'ye': 'е',
+            'yo': 'ё',
+            'yu': 'ю',
+            'ya': 'я',
+            'Ch': 'Ч',
+            'Sh': 'Ш',
+            'Shh': 'Щ',
+            'Zh': 'Ж',
+            'Ye': 'Е',
+            'Yo': 'Ё',
+            'Yu': 'Ю',
+            'Ya': 'Я',
+            'ja': 'я',
+            'je': 'е',
+            'jo': 'ё',
+            'ju': 'ю',
+            'Ja': 'Я',
+            'Je': 'Е',
+            'Jo': 'Ё',
+            'Ju': 'Ю'
+        };
+        const orderedCombos = ['shh', 'Shh', 'SHH', 'zh', 'Zh', 'ZH', 'ch', 'Ch', 'CH', 'sh', 'Sh', 'SH', 'jo', 'Jo', 'JO', 'ja', 'Ja', 'JA', 'je', 'Je', 'JE', 'ju', 'Ju', 'JU', 'yo', 'Yo', 'YO', 'ya', 'Ya', 'YA', 'ye', 'Ye', 'YE', 'yu', 'Yu', 'YU'];
+
+        let buffer = '';
+        let isShiftPressed = false;
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Shift') {
+                isShiftPressed = true;
+            }
+        });
+
+        document.addEventListener('keyup', (event) => {
+            if (event.key === 'Shift') {
+                isShiftPressed = false;
+            }
+        });
+
+        document.getElementById('input').addEventListener('input', (event) => {
+            const inputElem = event.target;
+            const cursorPosition = inputElem.selectionStart;
+            const charBeforeCursor = inputElem.value[cursorPosition - 1];
+            buffer += isShiftPressed ? charBeforeCursor.toUpperCase() : charBeforeCursor;
+            if (buffer.length > 3) buffer = buffer.slice(-3);
+
+            const replaced = checkAndReplaceCombos(inputElem, cursorPosition);
+            if (!replaced && mapping[charBeforeCursor]) {
+                inputElem.value = inputElem.value.substring(0, cursorPosition - 1) +
+                    mapping[charBeforeCursor] +
+                    inputElem.value.substring(cursorPosition);
+                inputElem.setSelectionRange(cursorPosition, cursorPosition);
+            }
+        });
+
+        function checkAndReplaceCombos(inputElem, cursorPosition) {
+            let replaced = false;
+
+            // 检查三个字符的组合
+            if (buffer.length >= 3) {
+                const lastThreeChars = buffer.slice(-3); // 获取最后三个字符
+                if (mapping[lastThreeChars]) {
+                    const mappedChar = mapping[lastThreeChars];
+
+                    // 对于三个字符的组合，计算开始位置应该向前推两个字符
+                    const startPos = cursorPosition - 2;
+                    const endPos = startPos + mappedChar.length;
+
+                    // 替换字符并更新光标位置
+                    inputElem.value = inputElem.value.substring(0, startPos) + mappedChar + inputElem.value.substring(cursorPosition);
+                    inputElem.setSelectionRange(endPos, endPos);
+
+                    buffer = ''; // 清空 buffer
+                    replaced = true;
+                }
+            }
+
+            // 检查两个字符的组合
+            if (!replaced && buffer.length >= 2) {
+                const lastTwoChars = buffer.slice(-2); // 获取最后两个字符
+                if (mapping[lastTwoChars]) {
+                    const mappedChar = mapping[lastTwoChars];
+
+                    const startPos = cursorPosition - 2;
+                    const endPos = startPos + mappedChar.length;
+
+                    inputElem.value = inputElem.value.substring(0, startPos) + mappedChar + inputElem.value.substring(cursorPosition);
+                    inputElem.setSelectionRange(endPos, endPos);
+
+                    replaced = true;
+                }
+            }
+
+            return replaced;
+        }
+
+        function replaceChars(inputElem, cursorPosition, combo, mappedChar) {
+            const startPos = cursorPosition - combo.length;
+            const endPos = startPos + mappedChar.length;
+
+            inputElem.value = inputElem.value.substring(0, startPos) + mappedChar + inputElem.value.substring(cursorPosition);
+            inputElem.setSelectionRange(endPos, endPos);
+        }
+
+        function addToInput(char) {
+            const inputElem = document.getElementById('input');
+            const cursorPosition = inputElem.selectionStart;
+            inputElem.value = inputElem.value.substring(0, cursorPosition) +
+                char +
+                inputElem.value.substring(cursorPosition);
+            inputElem.setSelectionRange(cursorPosition + 1, cursorPosition + 1);
+            inputElem.focus();
+        }
+
+        document.getElementById('copyButton').addEventListener('click', () => {
+            const inputElem = document.getElementById('input');
+            inputElem.select();
+            document.execCommand('copy');
+            showCopyConfirmation();
+            inputElem.focus();
+            inputElem.setSelectionRange(inputElem.value.length, inputElem.value.length);
+        });
+
+        function showCopyConfirmation() {
+            const confirmation = document.createElement('div');
+            confirmation.innerText = '已复制俄语文本';
+            confirmation.style.position = 'fixed';
+            confirmation.style.top = '40%';
+            confirmation.style.left = '50%';
+            confirmation.style.transform = 'translate(-50%, -50%)';
+            confirmation.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+            confirmation.style.color = 'white';
+            confirmation.style.padding = '10px';
+            confirmation.style.borderRadius = '5px';
+            confirmation.style.zIndex = 1000;
+            confirmation.style.opacity = 0;
+            confirmation.style.transition = 'opacity 300ms';
+
+            document.body.appendChild(confirmation);
+
+            setTimeout(() => {
+                confirmation.style.opacity = 1;
+            }, 0);
+            setTimeout(() => {
+                confirmation.style.opacity = 0;
+                setTimeout(() => document.body.removeChild(confirmation), 300);
+            }, 2000);
+        }
+
+        function clearInput() {
+            document.getElementById('input').value = '';
+            document.getElementById('input').focus(); // 清空后重新聚焦到文本框
+        }
+
+        let history = [];
+        let currentIndex = -1;
+
+        function updateHistory() {
+            const inputElem = document.getElementById('input');
+            history.push(inputElem.value);
+            currentIndex++;
+        }
+
+        function undoAction() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                document.getElementById('input').value = history[currentIndex];
+            }
+        }
+
+        // 在文本框的输入事件中更新历史记录
+        document.getElementById('input').addEventListener('input', updateHistory);
+    </script>
+
+</body>
+
+</html>
