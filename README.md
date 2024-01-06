@@ -17,4 +17,5 @@ RusTranslitKeyboard 是一个交互式的网络键盘工具，用于将拉丁字
 
 ## 致谢
 灵感来自于[TRANSLIT.CC](https://translit.cc/)。
+
 感谢使用 RusTranslitKeyboard，希望这个工具能对您的俄语学习和使用带来便利。
