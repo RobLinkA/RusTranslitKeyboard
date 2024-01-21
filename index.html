@@ -239,7 +239,7 @@
             'Jo': 'Ё',
             'Ju': 'Ю'
         };
-        const orderedCombos = ['shh', 'Shh', 'SHH', 'zh', 'Zh', 'ZH', 'ch', 'Ch', 'CH', 'sh', 'Sh', 'SH', 'jo', 'Jo', 'JO', 'ja', 'Ja', 'JA', 'je', 'Je', 'JE', 'ju', 'Ju', 'JU', 'yo', 'Yo', 'YO', 'ya', 'Ya', 'YA', 'ye', 'Ye', 'YE', 'yu', 'Yu', 'YU'];
+        const orderedCombos = ['shh', 'Shh', 'zh', 'Zh', 'ch', 'Ch', 'sh', 'Sh', 'jo', 'Jo', 'ja', 'Ja', 'je', 'Je', 'ju', 'Ju', 'yo', 'Yo', 'ya', 'Ya', 'ye', 'Ye', 'yu', 'Yu'];
 
         let buffer = '';
         let isShiftPressed = false;
@@ -324,10 +324,13 @@
         function addToInput(char) {
             const inputElem = document.getElementById('input');
             const cursorPosition = inputElem.selectionStart;
+            let charToInsert = isShiftPressed ? char.toUpperCase() : char; // 根据Shift键状态确定插入的字符
+
+            // 将字符插入到输入框并更新光标位置
             inputElem.value = inputElem.value.substring(0, cursorPosition) +
-                char +
+                charToInsert +
                 inputElem.value.substring(cursorPosition);
-            inputElem.setSelectionRange(cursorPosition + 1, cursorPosition + 1);
+            inputElem.setSelectionRange(cursorPosition + charToInsert.length, cursorPosition + charToInsert.length);
             inputElem.focus();
         }
 
