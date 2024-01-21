@@ -98,16 +98,16 @@
     <div class="keyboard">
         <!-- 第一排按键 -->
         <div class="key-row">
-            <div class="key" onclick="addToInput('—')"><span class="key-label">-</span><span class="key-letter">—</span></div>
-            <div class="key" onclick="addToInput('№')"><span class="key-label">#</span><span class="key-letter">№</span></div>
-            <div class="key" onclick="addToInput(';')"><span class="key-label">$</span><span class="key-letter">;</span></div>
-            <div class="key" onclick="addToInput(':')"><span class="key-label">^</span><span class="key-letter">:</span></div>
-            <div class="key" onclick="addToInput('₽')"><span class="key-label">*</span><span class="key-letter">₽</span></div>
             <div class="key" onclick="addToInput('́')"><span class="key-label">`</span><span class="key-letter">́</span></div>
             <div class="key" onclick="addToInput('·')"><span class="key-label">·</span><span class="key-letter">·</span></div>
-            <div class="key" onclick="addToInput('«')"><span class="key-label">q</span><span class="key-letter">«</span></div>
-            <div class="key" onclick="addToInput('»')"><span class="key-label">w</span><span class="key-letter">»</span></div>
-            <div class="key" onclick="addToInput('э')"><span class="key-label">e</span><span class="key-letter">э</span></div>
+            <div class="key" onclick="addToInput('—')"><span class="key-label">—</span><span class="key-letter">—</span></div>
+            <div class="key" onclick="addToInput('«')"><span class="key-label">$</span><span class="key-letter">«</span></div>
+            <div class="key" onclick="addToInput('»')"><span class="key-label">^</span><span class="key-letter">»</span></div>
+            <div class="key" onclick="addToInput('№')"><span class="key-label">#</span><span class="key-letter">№</span></div>
+            <div class="key" onclick="addToInput('₽')"><span class="key-label">*</span><span class="key-letter">₽</span></div>
+            <div class="key" onclick="addToInput('ъ')"><span class="key-label">q</span><span class="key-letter">ъ</span></div>
+            <div class="key" onclick="addToInput('ь')"><span class="key-label">w</span><span class="key-letter">ь</span></div>
+            <div class="key" onclick="addToInput('е')"><span class="key-label">e</span><span class="key-letter">е</span></div>
             <div class="key" onclick="addToInput('р')"><span class="key-label">r</span><span class="key-letter">р</span></div>
             <div class="key" onclick="addToInput('т')"><span class="key-label">t</span><span class="key-letter">т</span></div>
             <div class="key" onclick="addToInput('ы')"><span class="key-label">y</span><span class="key-letter">ы</span></div>
@@ -127,14 +127,12 @@
             <div class="key" onclick="addToInput('г')"><span class="key-label">g</span><span class="key-letter">г</span></div>
             <div class="key" onclick="addToInput('х')"><span class="key-label">h</span><span class="key-letter">х</span></div>
             <div class="key" onclick="addToInput('й')"><span class="key-label">j</span><span class="key-letter">й</span></div>
-            <div class="key" onclick="addToInput('е')"><span class="key-label">je</span><span class="key-letter">е</span></div>
+            <div class="key" onclick="addToInput('э')"><span class="key-label">je</span><span class="key-letter">э</span></div>
             <div class="key" onclick="addToInput('ё')"><span class="key-label">jo</span><span class="key-letter">ё</span></div>
             <div class="key" onclick="addToInput('ю')"><span class="key-label">ju</span><span class="key-letter">ю</span></div>
             <div class="key" onclick="addToInput('я')"><span class="key-label">ja</span><span class="key-letter">я</span></div>
             <div class="key" onclick="addToInput('к')"><span class="key-label">k</span><span class="key-letter">к</span></div>
             <div class="key" onclick="addToInput('л')"><span class="key-label">l</span><span class="key-letter">л</span></div>
-            <div class="key" onclick="addToInput('ъ')"><span class="key-label">;</span><span class="key-letter">ъ</span></div>
-            <div class="key" onclick="addToInput('ь')"><span class="key-label">'</span><span class="key-letter">ь</span></div>
         </div>
         <!-- 第三排按键... -->
         <div class="key-row">
@@ -159,7 +157,7 @@
             'v': 'в',
             'g': 'г',
             'd': 'д',
-            'e': 'э',
+            'e': 'е',
             'z': 'з',
             'i': 'и',
             'k': 'к',
@@ -178,13 +176,11 @@
             'y': 'ы',
             'j': 'й',
             'x': 'х',
-            '\;': 'ъ',
-            '\'': 'ь',
-            'q': '«',
-            'w': '»',
+            'q': 'ъ',
+            'w': 'ь',
+            '$': '«',
+            '^': '»',
             '#': '№',
-            '$': ';',
-            '^': ':',
             '*': '₽',
             '`': '́',
 
@@ -194,7 +190,7 @@
             'V': 'В',
             'G': 'Г',
             'D': 'Д',
-            'E': 'Э',
+            'E': 'Е',
             'Z': 'З',
             'I': 'И',
             'K': 'К',
@@ -213,17 +209,15 @@
             'Y': 'Ы',
             'J': 'Й',
             'X': 'Х',
-            '\:': 'Ъ',
-            '\"': 'Ь',
-            'Q': '«',
-            'W': '»',
+            'Q': 'Ъ',
+            'W': 'Ь',
 
             // 特殊字符组合
             'ch': 'ч',
             'sh': 'ш',
             'shh': 'щ',
             'zh': 'ж',
-            'ye': 'е',
+            'ye': 'э',
             'yo': 'ё',
             'yu': 'ю',
             'ya': 'я',
@@ -231,16 +225,16 @@
             'Sh': 'Ш',
             'Shh': 'Щ',
             'Zh': 'Ж',
-            'Ye': 'Е',
+            'Ye': 'Э',
             'Yo': 'Ё',
             'Yu': 'Ю',
             'Ya': 'Я',
             'ja': 'я',
-            'je': 'е',
+            'je': 'э',
             'jo': 'ё',
             'ju': 'ю',
             'Ja': 'Я',
-            'Je': 'Е',
+            'Je': 'Э',
             'Jo': 'Ё',
             'Ju': 'Ю'
         };
